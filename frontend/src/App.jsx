@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-const API = 'http://localhost:4000/api';
+const API = '/api';
 
 const defaultForm = {
   amount: '',
