@@ -33,6 +33,33 @@ Backend API: http://localhost:4000/api
 - `GET /api/expenses` — список расходов
 - `GET /api/analytics` — аналитика и рекомендации AI
 
+
+## Быстрый деплой через Docker (рекомендуется)
+
+1) Подготовьте переменные окружения backend:
+```bash
+cp backend/.env.example backend/.env
+# заполните OPENAI_API_KEY
+```
+
+2) Запустите все сервисы:
+```bash
+docker compose up -d --build
+```
+
+3) Проверка:
+- Приложение: `http://<IP_или_домен>`
+- Backend health: `http://<IP_или_домен>/api/health`
+
+4) Обновление:
+```bash
+git pull
+docker compose up -d --build
+```
+
+> В docker-схеме frontend обслуживается Nginx-ом, а `/api` автоматически проксируется в backend контейнер.
+> База SQLite хранится в именованном volume `backend_data` и не теряется после перезапуска контейнеров.
+
 ---
 
 ## Как поставить на домен (production)
